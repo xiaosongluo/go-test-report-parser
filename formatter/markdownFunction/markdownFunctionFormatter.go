@@ -51,8 +51,8 @@ func (formatter MarkdownFunctionFormatter) Formatter(report *parser.Report, w io
 				skip += 1
 			}
 
-			item := fmt.Sprintf("|API测试|%s|%s|%s|\n", classname, test.Name, result)
-			detail = detail + item
+			//item := fmt.Sprintf("|API测试|%s|%s|%s|\n", classname, test.Name, result)
+			//detail = detail + item
 			item_fail := fmt.Sprintf("|API测试|%s|%s|%s|\n", classname, test.Name, result)
 			if result == "不通过"{
 			    error_case = error_case + item_fail
@@ -66,10 +66,10 @@ func (formatter MarkdownFunctionFormatter) Formatter(report *parser.Report, w io
 	_, _ = writer.WriteString(summary)
 	_ = writer.WriteByte('\n')
 
-	_, _ = writer.WriteString(detailHeader())
-	_, _ = writer.WriteString(detail)
-	_ = writer.WriteByte('\n')
-	_ = writer.Flush()
+	//_, _ = writer.WriteString(detailHeader())
+	//_, _ = writer.WriteString(detail)
+	//_ = writer.WriteByte('\n')
+	//_ = writer.Flush()
 
 	_, _ = writer.WriteString(errorHeader())
 	_, _ = writer.WriteString(error_case)
