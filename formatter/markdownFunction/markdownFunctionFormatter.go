@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"github.com/jstemmer/go-junit-report/parser"
-	"github.com/longyueting/go-test-report-parser/formatter"
+	"github.com/xiaosongluo/go-test-report-parser/formatter"
 	"io"
 )
 
