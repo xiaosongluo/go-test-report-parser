@@ -24,6 +24,8 @@ func (formatter MarkdownFunctionFormatter) Formatter(report *parser.Report, w io
 	writer := bufio.NewWriter(w)
 	summary := ""
 	detail := ""
+	error_case := ""
+	
 
 	// convert Report to JUnit test suites
 	for _, pkg := range report.Packages {
@@ -51,6 +53,9 @@ func (formatter MarkdownFunctionFormatter) Formatter(report *parser.Report, w io
 
 			item := fmt.Sprintf("|API测试|%s|%s|%s|\n", classname, test.Name, result)
 			detail = detail + item
+			if result = "不通过"{
+			    error_case = error_case + item
+			}
 		}
 
 		item := fmt.Sprintf("|%s|%d|%d|%d|%d|\n", classname, pass+fail+skip, pass, fail, skip)
@@ -65,6 +70,11 @@ func (formatter MarkdownFunctionFormatter) Formatter(report *parser.Report, w io
 	_ = writer.WriteByte('\n')
 	_ = writer.Flush()
 
+	_, _ = writer.WriteString(errorHeader())
+	_, _ = writer.WriteString(error_case)
+	_ = writer.WriteByte('\n')
+	_ = writer.Flush()
+	
 	return nil
 }
 
@@ -74,4 +84,9 @@ func detailHeader() string {
 
 func summaryHeader() string {
 	return "###汇总测试结果\n|测试模块|总用例数|通过用例数|未通过用例数|跳过用例数|\n|--------|---------|--------|--------|--------|\n"
+}
+
+
+func errorHeader() string{
+    return "###失败的详细测试结果\n|测试内容|测试模块|子测试项|测试结果|\n|--------|---------|--------|--------|\n"
 }
