@@ -53,8 +53,9 @@ func (formatter MarkdownFunctionFormatter) Formatter(report *parser.Report, w io
 
 			item := fmt.Sprintf("|API测试|%s|%s|%s|\n", classname, test.Name, result)
 			detail = detail + item
+			item_fail := fmt.Sprintf("|API测试|%s|%s|%s|\n", classname, test.Name, result)
 			if result == "不通过"{
-			    error_case = error_case + item
+			    error_case = error_case + item_fail
 			}
 		}
 
