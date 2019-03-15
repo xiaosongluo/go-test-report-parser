@@ -4,9 +4,9 @@ import (
 	"flag"
 	"fmt"
 	"github.com/jstemmer/go-junit-report/parser"
-	"github.com/longyueting/go-test-report-parser/formatter"
-	_ "github.com/longyueting/go-test-report-parser/formatter/junit"
-	_ "github.com/longyueting/go-test-report-parser/formatter/markdownFunction"
+	"github.com/xiaosongluo/go-test-report-parser/formatter"
+	_ "github.com/xiaosongluo/go-test-report-parser/formatter/junit"
+	_ "github.com/xiaosongluo/go-test-report-parser/formatter/markdownFunction"
 	"os"
 )
 
