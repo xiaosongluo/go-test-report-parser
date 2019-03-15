@@ -49,11 +49,10 @@ func (formatter MarkdownFunctionFormatter) Formatter(report *parser.Report, w io
 			default:
 				result = "未测试"
 				skip += 1
-			}
-
+			}			
 			item := fmt.Sprintf("|API测试|%s|%s|%s|\n", classname, test.Name, result)
 			detail = detail + item
-			if result = "不通过"{
+			if result == "不通过"{
 			    error_case = error_case + item
 			}
 		}
@@ -85,7 +84,6 @@ func detailHeader() string {
 func summaryHeader() string {
 	return "###汇总测试结果\n|测试模块|总用例数|通过用例数|未通过用例数|跳过用例数|\n|--------|---------|--------|--------|--------|\n"
 }
-
 
 func errorHeader() string{
     return "###失败的详细测试结果\n|测试内容|测试模块|子测试项|测试结果|\n|--------|---------|--------|--------|\n"
