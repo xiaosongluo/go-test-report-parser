@@ -49,14 +49,12 @@ func (formatter MarkdownFunctionFormatter) Formatter(report *parser.Report, w io
 			default:
 				result = "未测试"
 				skip += 1
-			}
-                        item_fail := fmt.Sprintf("|API测试|%s|%s|%s|\n", classname, test.Name, result)
-			if result == "不通过"{
-			    error_case = error_case + item_fail
-			}
+			}			
 			item := fmt.Sprintf("|API测试|%s|%s|%s|\n", classname, test.Name, result)
 			detail = detail + item
-			
+			if result == "不通过"{
+			    error_case = error_case + item
+			}
 		}
 
 		item := fmt.Sprintf("|%s|%d|%d|%d|%d|\n", classname, pass+fail+skip, pass, fail, skip)
