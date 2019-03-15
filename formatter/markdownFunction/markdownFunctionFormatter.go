@@ -69,7 +69,7 @@ func (formatter MarkdownFunctionFormatter) Formatter(report *parser.Report, w io
 	_, _ = writer.WriteString(detailHeader())
 	_, _ = writer.WriteString(detail)
 	_ = writer.WriteByte('\n')
-	_ = writer.Flush()
+	//_ = writer.Flush()
 
 	_, _ = writer.WriteString(errorHeader())
 	_, _ = writer.WriteString(error_case)
@@ -86,7 +86,6 @@ func detailHeader() string {
 func summaryHeader() string {
 	return "###汇总测试结果\n|测试模块|总用例数|通过用例数|未通过用例数|跳过用例数|\n|--------|---------|--------|--------|--------|\n"
 }
-
 
 func errorHeader() string{
     return "###失败的详细测试结果\n|测试内容|测试模块|子测试项|测试结果|\n|--------|---------|--------|--------|\n"
